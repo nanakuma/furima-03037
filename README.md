@@ -16,18 +16,15 @@
 |------------------------------- |---------------------|-------------------------|
 | nickname                       | string              | null: false             | 
 | mail                           | string              | null: false             |
-| password                       | string              | null: false             |
-| password_verrification         | string              | null: false             |
+| encrypted_password             | string              | null: false             |
 | firstname_kanji                | string              | null: false             |
 | lastname_kanji                 | string              | null: false             |
 | firstname_kana                 | string              | null: false             |
 | lastname_kana                  | string              | null: false             |
-| birth                          | integer             | null: false             |
+| birth                          | data                | null: false             |
 
 * has_many :items
 * has_many :purchase
-* has_one  :customer
-
 
 ## 商品情報　items table
 ## 出品画像
@@ -43,8 +40,7 @@
 
 | Column                         | Type                | Options                 |
 |------------------------------- |---------------------|-------------------------|
-| item_image                     | references          | null: false             | 
-| item_name                      | text                | null: false             |
+| item_name                      | string              | null: false             |
 | item_explanation               | text                | null: false             |
 | item_category                  | integer             | null: false             |
 | item_state                     | integer             | null: false             |
@@ -55,19 +51,17 @@
 
 belongs_to :user
 
-## 購入画面 purchase table
+has_many :purchase
 
-##　カード情報
-##　有効期限
-##　セキュリティコード
+## 購入画面 purchase table
 
 | Column                         | Type                | Options                 |
 |------------------------------- |---------------------|-------------------------|
-| card_infomation                | string              | null: false             | 
-| expiration                     | integer             | null: false             |
-| security                       | string              | null: false             |
+| user                           | references          | foreign_key: true       | 
+| items                          | references          | foreign_key: true       | 
 
 belongs_to :user
+belongs_to :items
 
 
 ## 発送先情報  customer table
@@ -75,13 +69,17 @@ belongs_to :user
 | Column                         | Type                | Options                 |
 |------------------------------- |---------------------|-------------------------|
 | post_num                       | string              | null: false             | 
-| perfectures                    | integer             | null: false             |
-| municipalities                 | text                | null: false             |
-| address                        | text                | null: false             |
-| bilding                        | text                |                         |
+| shipping_area                  | integer             | null: false             |
+| municipalities                 | string              | null: false             |
+| address                        | string              | null: false             |
+| bilding                        | string              |                         |
 | tel                            | string              | null: false             |
+| user                           | references          | foreign_key: true       | 
+| items                          | references          | foreign_key: true       | 
 
 belongs_to :user
+belongs_to :items
+belongs_to :customer
 
 
 
