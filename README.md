@@ -15,7 +15,7 @@
 | Column                         | Type                | Options                 |
 |------------------------------- |---------------------|-------------------------|
 | nickname                       | string              | null: false             | 
-| mail                           | string              | null: false             |
+| email                          | string              | null: false, unique: true |
 | encrypted_password             | string              | null: false             |
 | firstname_kanji                | string              | null: false             |
 | lastname_kanji                 | string              | null: false             |
@@ -24,7 +24,7 @@
 | birth                          | data                | null: false             |
 
 * has_many :items
-* has_many :purchase
+* has_many :purchases
 
 ## 商品情報　items table
 ## 出品画像
@@ -51,7 +51,7 @@
 
 belongs_to :user
 
-has_many :purchase
+has_one :purchase
 
 ## 購入画面 purchase table
 
@@ -61,7 +61,8 @@ has_many :purchase
 | items                          | references          | foreign_key: true       | 
 
 belongs_to :user
-belongs_to :items
+belongs_to :item
+has_one :customer
 
 
 ## 発送先情報  customer table
@@ -69,17 +70,16 @@ belongs_to :items
 | Column                         | Type                | Options                 |
 |------------------------------- |---------------------|-------------------------|
 | post_num                       | string              | null: false             | 
-| shipping_area                  | integer             | null: false             |
+| shipping_area_customer_id      | integer             | null: false             |
 | municipalities                 | string              | null: false             |
 | address                        | string              | null: false             |
-| bilding                        | string              |                         |
+| building                       | string              |                         |
 | tel                            | string              | null: false             |
-| user                           | references          | foreign_key: true       | 
-| items                          | references          | foreign_key: true       | 
+| user                           | references          | 　　　　　　　　　　       | 
+| items                          | references          | 　　　　　　　　　　　      | 
 
 belongs_to :user
 belongs_to :items
-belongs_to :customer
 
 
 
