@@ -42,11 +42,11 @@
 |------------------------------- |---------------------|-------------------------|
 | item_name                      | string              | null: false            |
 | item_explanation               | text                | null: false            |
-| item_category                  | integer             | null: false            |
-| item_state                     | integer             | null: false            |
-| delivery_cost                  | integer             | null: false            |
-| shipping_area                  | integer             | null: false            |
-| shipping_days                  | integer             | null: false            |
+| item_category_id               | integer             | null: false            |
+| item_state_id                  | integer             | null: false            |
+| delivery_cost_id               | integer             | null: false            |
+| shipping_area_id               | integer             | null: false            |
+| shipping_days_id               | integer             | null: false            |
 | price                          | string              | null: false             |
 
 belongs_to :user
