@@ -40,13 +40,13 @@
 
 | Column                         | Type                | Options                 |
 |------------------------------- |---------------------|-------------------------|
-| item_name                      | string              | null: false             |
-| item_explanation               | text                | null: false             |
-| item_category                  | integer             | null: false             |
-| item_state                     | integer             | null: false             |
-| delivery_cost                  | integer             | null: false             |
-| shipping_area                  | integer             | null: false             |
-| shipping_days                  | integer             | null: false             |
+| item_name                      | string              | null: false            |
+| item_explanation               | text                | null: false            |
+| item_category                  | integer             | null: false            |
+| item_state                     | integer             | null: false            |
+| delivery_cost                  | integer             | null: false            |
+| shipping_area                  | integer             | null: false            |
+| shipping_days                  | integer             | null: false            |
 | price                          | string              | null: false             |
 
 belongs_to :user
@@ -58,7 +58,7 @@ has_one :purchase
 | Column                         | Type                | Options                 |
 |------------------------------- |---------------------|-------------------------|
 | user                           | references          | foreign_key: true       | 
-| items                          | references          | foreign_key: true       | 
+| item                           | references          | foreign_key: true       | 
 
 belongs_to :user
 belongs_to :item
@@ -69,17 +69,17 @@ has_one :customer
 
 | Column                         | Type                | Options                 |
 |------------------------------- |---------------------|-------------------------|
-| post_num                       | string              | null: false             | 
-| shipping_area_customer_id      | integer             | null: false             |
-| municipalities                 | string              | null: false             |
-| address                        | string              | null: false             |
+| post_num                       | string              | null: false            | 
+| shipping_area_customer_id      | integer             | null: false            |
+| municipalities                 | string              | null: false            |
+| address                        | string              | null: false            |
 | building                       | string              |                         |
 | tel                            | string              | null: false             |
-| user                           | references          | 　　　　　　　　　　       | 
-| items                          | references          | 　　　　　　　　　　　      | 
+| user                           | references          |      | 
+| items                          | references          |      | 
 
 belongs_to :user
-belongs_to :items
+belongs_to :item
 
 
 
