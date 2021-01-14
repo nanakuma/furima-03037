@@ -70,13 +70,11 @@ has_one :customer
 | Column                         | Type                | Options                 |
 |------------------------------- |---------------------|-------------------------|
 | post_num                       | string              | null: false            | 
-| shipping_area_customer_id      | integer             | null: false            |
+| shipping_area_id               | integer             | null: false            |
 | municipalities                 | string              | null: false            |
 | address                        | string              | null: false            |
 | building                       | string              |                         |
 | tel                            | string              | null: false             |
-| user                           | references          |      | 
-| items                          | references          |      | 
 
 belongs_to :user
 belongs_to :item
