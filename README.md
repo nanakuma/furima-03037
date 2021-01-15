@@ -75,9 +75,9 @@ has_one :customer
 | address                        | string              | null: false            |
 | building                       | string              |                         |
 | tel                            | string              | null: false             |
+| perchase_id                    | reference           | foreign_key: true       |
 
-belongs_to :user
-belongs_to :item
+belongs_to :purchase
 
 
 
