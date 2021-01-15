@@ -47,7 +47,7 @@
 | delivery_cost_id               | integer             | null: false            |
 | shipping_area_id               | integer             | null: false            |
 | shipping_days_id               | integer             | null: false            |
-| price                          | string              | null: false             |
+| price                          | string              | null: false            |
 
 belongs_to :user
 
