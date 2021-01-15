@@ -40,10 +40,10 @@
 
 | Column                         | Type                | Options                 |
 |------------------------------- |---------------------|-------------------------|
-| item_name                      | string              | null: false            |
-| item_explanation               | text                | null: false            |
-| item_category_id               | integer             | null: false            |
-| item_state_id                  | integer             | null: false            |
+| name                      | string              | null: false            |
+| explanation               | text                | null: false            |
+| category_id               | integer             | null: false            |
+| state_id                  | integer             | null: false            |
 | delivery_cost_id               | integer             | null: false            |
 | shipping_are_id                | integer             | null: false            |
 | shipping_days_id               | integer             | null: false            |
