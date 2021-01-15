@@ -45,15 +45,16 @@
 | item_category_id               | integer             | null: false            |
 | item_state_id                  | integer             | null: false            |
 | delivery_cost_id               | integer             | null: false            |
-| shipping_area_id               | integer             | null: false            |
+| shipping_are_id                | integer             | null: false            |
 | shipping_days_id               | integer             | null: false            |
-| price                          | integer              | null: false            |
+| price                          | integer             | null: false            |
+| user                           | reference           | foreign_key: true      |
 
 belongs_to :user
 
 has_one :purchase
 
-## 購入画面 purchase table
+## 購入画面 purchases table
 
 | Column                         | Type                | Options                 |
 |------------------------------- |---------------------|-------------------------|
@@ -65,7 +66,7 @@ belongs_to :item
 has_one :customer
 
 
-## 発送先情報  customer table
+## 発送先情報  customers table
 
 | Column                         | Type                | Options                 |
 |------------------------------- |---------------------|-------------------------|
@@ -75,7 +76,7 @@ has_one :customer
 | address                        | string              | null: false            |
 | building                       | string              |                         |
 | tel                            | string              | null: false             |
-| perchase_id                    | reference           | foreign_key: true       |
+| perchase                       | reference           | foreign_key: true       |
 
 belongs_to :purchase
 
