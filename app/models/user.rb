@@ -8,12 +8,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, presence: true
-  validates :firstname_kanji, presence: true
-  validates :lastname_kanji, presence: true
-  validates :firstname_kana, presence: true
-  validates :lastname_kana, presence: true
-  validates :birth, presence: true
+         with_options presence: true do
+          validates :nickname
+          validates :birth
+          
+         end
+
+         with_options presence: true, format: { with: /\A[一-龥]+\z/, message: '全角漢字を使用してください' } do
+          validates :firstname_kanji
+          validates :lastname_kanji
+        end
+
+        with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: '全角カナを使用してください' } do
+          validates :firstname_kana
+          validates :lastname_kana
+        end
 
   validates_format_of :password, with: VALID_PASSWORD_REGEX
   
