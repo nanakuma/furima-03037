@@ -21,7 +21,7 @@
 | lastname_kanji                 | string              | null: false             |
 | firstname_kana                 | string              | null: false             |
 | lastname_kana                  | string              | null: false             |
-| birth                          | data                | null: false             |
+| birth                          | date                | null: false             |
 
 * has_many :items
 * has_many :purchases
