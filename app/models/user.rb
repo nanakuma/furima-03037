@@ -14,7 +14,7 @@ class User < ApplicationRecord
           
          end
 
-         with_options presence: true, format: { with: /\A[一-龥]+\z/, message: '全角漢字を使用してください' } do
+         with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龠々]+\z/, message: '全角漢字を使用してください' } do
           validates :firstname_kanji
           validates :lastname_kanji
         end

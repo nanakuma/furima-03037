@@ -6,6 +6,12 @@ RSpec.describe User, type: :model do
       @user = FactoryBot.build(:user)
     end
 
+    context '内容に問題ない場合' do
+
+    end
+
+    context '内容に問題ある場合' do
+
     it "nicknameが空では登録できない" do
       @user.nickname = ""
       @user.valid?
@@ -85,7 +91,7 @@ RSpec.describe User, type: :model do
 
 it "ユーザー本名は漢字のみで入力させること(漢字以外で入力した場合、登録できない)" do    
   @user.lastname_kanji = "aaaaaa"
-  @user.firstname_kanji = "bbbbbb"
+  @user.firstname_kanji = "cccccc"
   @user.valid?
   expect(@user.errors.full_messages).to include("Firstname kanji 全角漢字を使用してください", "Lastname kanji 全角漢字を使用してください")
 end
@@ -93,7 +99,7 @@ end
 it "ユーザー本名のフリガナは全角カタカナ(全角カタカナ以外で入力した場合、登録できない)" do
   
   @user.lastname_kana = "aaaaaa"
-  @user.firstname_kana = "bbbbbb"
+  @user.firstname_kana = "cccccc"
   @user.valid?
   expect(@user.errors.full_messages).to include("Firstname kana 全角カナを使用してください", "Lastname kana 全角カナを使用してください")
 end
@@ -105,8 +111,7 @@ end
     @user.birth = ""
     @user.valid?
     expect(@user.errors.full_messages).to include("Birth can't be blank")
-end
-    
-    
+    end  
   end
+ end
 end
