@@ -17,6 +17,16 @@ class Item < ApplicationRecord
 
   end
 
+  with_options numericality: { other_than: 1 } do
+
+  validates :category_id
+  validates :state_id
+  validates :delivery_cost_id
+  validates :shipping_are_id
+  validates :shipping_days_id
+  
+  end
+
 
 
 

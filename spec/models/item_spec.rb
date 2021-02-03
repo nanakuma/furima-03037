@@ -76,9 +76,9 @@ RSpec.describe Item, type: :model do
       end
 
       it "発送先の地域(shipping_are_id)が--では登録できない" do
-        @item.shipping_are_id  = "0"
+        @item.shipping_are_id  = "1"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping are must be other than 0")
+        expect(@item.errors.full_messages).to include("Shipping are must be other than 1")
       end
 
       it "発送までの日数(shipping_days_id)が空では登録できない" do
