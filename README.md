@@ -26,7 +26,7 @@
 * has_many :items
 * has_many :purchases
 
-## 商品情報 items table
+## 商品情報 items table(item_put)
 ## 出品画像
 ## 商品名
 ## 商品説明
@@ -36,6 +36,7 @@
 ## 発送先の地域
 ## 発送までの日数
 ## 販売価格
+
 
 
 | Column                         | Type                | Options                 |
