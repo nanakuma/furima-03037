@@ -105,6 +105,24 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
 
+      it "価格(price)が全角文字と登録できない" do
+        @item.price  = "あああ"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not included in the list")
+      end
+
+      it "価格(price)が半角英数混合だと登録できない" do
+        @item.price  = "400a"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it "価格(price)が半角英のみだと登録できない" do
+        @item.price  = "aaa"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
       it "価格の範囲が¥300~¥9999999の間である(299円だと登録できない)" do
         @item.price  = 299
         @item.valid?

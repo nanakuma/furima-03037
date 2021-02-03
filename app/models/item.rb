@@ -24,11 +24,9 @@ class Item < ApplicationRecord
   validates :shipping_days_id
   end
 
-  with_options format: { with: /\A[a-zA-Z0-9]+\z/, message: '半角英数を使用してください' } do
+  with_options numericality: { only_integer: true } do
   validates :price
   end
-
-
 
 
 # イメージのアソシエーションを組む
@@ -36,9 +34,11 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   belongs_to :user  
-  has_one :purchase
+  has_one    :purchase
   belongs_to :category
-
-
-  
+  belongs_to :state
+  belongs_to :delivery_cost
+  belongs_to :shipping_are
+  belongs_to :shipping_days
+ 
 end
