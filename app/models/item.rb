@@ -7,24 +7,25 @@ class Item < ApplicationRecord
 
   validates :name
   validates :explanation
-  validates :category_id, numericality: { other_than: 1 }
-  validates :state_id, numericality: { other_than: 1 }
-  validates :delivery_cost_id, numericality: { other_than: 1 }
-  validates :shipping_are_id, numericality: { other_than: 0 }
-  validates :shipping_days_id, numericality: { other_than: 1 }
-  validates :price, presence: true,inclusion:{in: 300..9999999}
-  validates :user
-
-  end
-
-  with_options numericality: { other_than: 1 } do
-
   validates :category_id
   validates :state_id
   validates :delivery_cost_id
   validates :shipping_are_id
   validates :shipping_days_id
-  
+  validates :price,inclusion:{in: 300..9999999}
+  end
+
+  with_options numericality: { other_than: 1 } do
+    
+  validates :category_id
+  validates :state_id
+  validates :delivery_cost_id
+  validates :shipping_are_id
+  validates :shipping_days_id
+  end
+
+  with_options format: { with: /\A[a-zA-Z0-9]+\z/, message: '半角英数を使用してください' } do
+  validates :price
   end
 
 
