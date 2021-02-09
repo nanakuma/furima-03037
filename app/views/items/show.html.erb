@@ -44,27 +44,27 @@
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= "#{user.nickname}" %></td>
+          <td class="detail-value"><%= "#{@item.user.nickname}" %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= "#{item.category}" %></td>
+          <td class="detail-value"><%= "#{@item.category.name}" %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= "#{item.state}" %></td>
+          <td class="detail-value"><%= "#{@item.state.name}" %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= "#{item.delivery_cost}" %></td>
+          <td class="detail-value"><%= "#{@item.delivery_cost.name}" %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= "#{item.shopping_are}" %></td>
+          <td class="detail-value"><%= "#{@item.shipping_are.name}" %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= "#{item.shopping_days}" %></td>
+          <td class="detail-value"><%= "#{@item.shipping_days.name}" %></td>
         </tr>
       </tbody>
     </table>
@@ -106,7 +106,7 @@
     </a>
   </div>
   <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう(見直しの際に必要) %>
-  <a href=“#” class=‘another-item’><%= "商品のカテゴリー名" %>をもっと見る</a>
+  <a href=“#” class=‘another-item’><%= "#{@item.category.name}" %>をもっと見る</a>
   <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう(見直しの際に必要) %>
 </div>
 
