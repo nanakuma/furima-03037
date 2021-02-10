@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!,only: [:new, :create, :edit ]
+  before_action :authenticate_user!,except: [:index, :show]
   before_action :set_item, only: [:edit, :show, :update]
 
   def index
@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
     # ルグインしている人が出品者でなければ、トップページに戻す
     unless current_user.id == @item.id
       redirect_to root_path
@@ -32,8 +31,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
-
     if @item.update(item_params)
       redirect_to root_path
     else
