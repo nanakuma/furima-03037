@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!,only: [:new, :create]
+  before_action :authenticate_user!,only: [:new, :create, :edit ]
+  #before_action :set_item, only: [:edit, :show]
 
   def index
     @items = Item.all.order("created_at DESC")
@@ -24,12 +25,16 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    # ルグインしている人が出品者でなければ、トップページに戻す
+    unless current_user.id == @item.id
+      redirect_to root_path
+    end
   end
 
   def update
-    item = Item.find(params[:id])
+    @item = Item.find(params[:id])
 
-    if item.update(item_params)
+    if @item.update(item_params)
       redirect_to root_path
     else
       render :edit
@@ -40,6 +45,11 @@ class ItemsController < ApplicationController
 private
 def item_params
   params.require(:item).permit(:image,:name,:explanation,:category_id,:state_id,:delivery_cost_id,:shipping_are_id,:shipping_days_id,:price).merge(user_id: current_user.id)
+end
+
+
+def set_item
+  @item = Item.find(params[:id])
 end
 
 end
