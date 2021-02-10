@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!,except: [:index, :show]
   before_action :set_item, only: [:edit, :show, :update]
+  before_action :sec_item, only: [:edit, :update]
 
   def index
     @items = Item.all.order("created_at DESC")
@@ -24,10 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # ルグインしている人が出品者でなければ、トップページに戻す
-    unless current_user.id == @item.id
-      redirect_to root_path
-    end
+
   end
 
   def update
@@ -48,5 +46,12 @@ end
 def set_item
   @item = Item.find(params[:id])
 end
+
+def sec_item
+  unless current_user.id == @item.id
+    redirect_to root_path
+  end
+end
+
 
 end
