@@ -12,6 +12,8 @@ class Credit
 
     validates :user_id
     validates :item_id
+
+    validates :token
   end
   
 

@@ -15,6 +15,12 @@ RSpec.describe Order, type: :model do
       it "正常確認" do
       expect(@credit).to be_valid
       end
+
+      it "建物があっても登録できる" do
+      expect(@credit).to be_valid
+      @credit.building = "学校"
+      end
+
     end
 
     context '内容に問題ある場合' do
@@ -78,6 +84,13 @@ RSpec.describe Order, type: :model do
         @credit.valid?
         expect(@credit.errors.full_messages).to include("Item can't be blank")
       end
+
+      it "tokenがなければ登録できない" do
+        @credit.token = ""
+        @credit.valid?
+        expect(@credit.errors.full_messages).to include("Token can't be blank")
+      end
+
 
 
 
