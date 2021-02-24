@@ -1,9 +1,9 @@
 class OrderController < ApplicationController
   before_action :authenticate_user!,except: [:credit]
+  before_action :itemf,expect: [:index,:create]
   def index
     #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入する
     @credit = Credit.new
-    @item = Item.find(params[:item_id])
     if current_user == @item.user
        redirect_to root_path
     end
@@ -14,10 +14,8 @@ class OrderController < ApplicationController
 #binding.pryをかけて住所情報が送れているかかくにんする
   def create
     @credit = Credit.new(credit_params)
-    @item = Item.find(params[:item_id])
     
     if @credit.valid?
-      #binding.pry
       @credit.save
       credit_params
       Payjp.api_key = "sk_test_e4ccce0316fd10e5bf8e6f23"  # 自身のPAY.JPテスト秘密鍵を記述しましょう
@@ -28,17 +26,18 @@ class OrderController < ApplicationController
       )
       redirect_to root_path
     else
-      #render item_order_index
       render :index
     end
   end
 
   private
 def credit_params
-
-  #params.permit(:post_num,:shipping_area_id,:municipalities,:addresses,:building,:tel,:item_id).merge(user_id: current_user.id)
-  #params.permit(:number,:exp_month,:exp_year,:cvc,:post_num,:shipping_area_id,:municipalities,:addresses,:building,:tel,:item_id).merge(user_id: current_user.id)
   params.permit(:post_num,:shipping_area_id,:municipalities,:addresses,:building,:tel,:item_id,:token).merge(user_id: current_user.id,token: params[:token])
 end
+
+def itemf
+  @item = Item.find(params[:item_id])
+end
+
 
 end

@@ -9,13 +9,14 @@ class Credit
     validates :municipalities
     validates :addresses
     validates :tel,format: { with: /\A\d{11}\z/, message: "is invalid. Include hyphen(-)" }
+
+    validates :user_id
+    validates :item_id
   end
   
 
   def save
     # 住所の情報を保存
-    #1.order
-    #2.address
     order = Order.create(item_id: item_id,user_id: user_id)
     Address.create(post_num: post_num, shipping_area_id: shipping_area_id, municipalities: municipalities, building: building, addresses: addresses,tel: tel,order_id: order.id)
   end

@@ -1,12 +1,12 @@
 class CreateAddresses < ActiveRecord::Migration[6.0]
   def change
     create_table :addresses do |t|
-t.string  :post_num
-t.integer :shipping_area_id
-t.string  :municipalities
-t.string  :addresses
-t.string  :building
-t.string  :tel
+t.string  :post_num           ,null: false
+t.integer :shipping_area_id   ,null: false
+t.string  :municipalities     ,null: false
+t.string  :addresses          ,null: false
+t.string  :building           ,null: false
+t.string  :tel                ,null: false
 
 t.references :order,foreign_key: true
 t.timestamps

@@ -4,8 +4,9 @@ RSpec.describe Order, type: :model do
 
   describe "購入者登録" do
     before do
+      user = FactoryBot.create(:user)
       item = FactoryBot.create(:item)
-      @credit = FactoryBot.build(:credit,item_id: item.id)
+      @credit = FactoryBot.build(:credit,item_id: item.id,user_id: user.id)
       sleep 0.1
     end
     
@@ -64,6 +65,12 @@ RSpec.describe Order, type: :model do
         @credit.tel = "0901111222233"
         @credit.valid?
         expect(@credit.errors.full_messages).to include("Tel is invalid. Include hyphen(-)")
+      end
+
+      it "user_idがなければ登録できない" do
+        @credit.user_id = ""
+        @credit.valid?
+        #expect(@credit.errors.full_messages).to include("Tel is invalid. Include hyphen(-)")
       end
 
 
