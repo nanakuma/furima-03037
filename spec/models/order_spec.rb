@@ -6,6 +6,7 @@ RSpec.describe Order, type: :model do
     before do
       item = FactoryBot.create(:item)
       @credit = FactoryBot.build(:credit,item_id: item.id)
+      sleep 0.1
     end
     
     
@@ -26,7 +27,7 @@ RSpec.describe Order, type: :model do
       it "郵便番号にはハイフンが必要である(ハイフンなしで入力)" do
         @credit.post_num = "0001111"
         @credit.valid?
-        #expect(@credit.errors.full_messages).to include("Post num can't be blank")
+        expect(@credit.errors.full_messages).to include("Post num is invalid. Include hyphen(-)")
       end
 
       it "都道府県がなければ登録できない" do
@@ -56,13 +57,13 @@ RSpec.describe Order, type: :model do
       it "電話番号はハイフンが不要である" do
         @credit.tel = "090-1111-2222"
         @credit.valid?
-        #expect(@credit.errors.full_messages).to include("Tel can't be blank")
+        expect(@credit.errors.full_messages).to include("Tel is invalid. Include hyphen(-)")
       end
 
       it "電話番号は11けた以内である(11けたより多くする)" do
         @credit.tel = "0901111222233"
         @credit.valid?
-        #expect(@credit.errors.full_messages).to include("Tel can't be blank")
+        expect(@credit.errors.full_messages).to include("Tel is invalid. Include hyphen(-)")
       end
 
 

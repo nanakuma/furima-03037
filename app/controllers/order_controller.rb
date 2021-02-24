@@ -1,8 +1,12 @@
 class OrderController < ApplicationController
+  before_action :authenticate_user!,except: [:credit]
   def index
     #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入する
     @credit = Credit.new
-    @item = Item.new(params[:id])
+    @item = Item.find(params[:item_id])
+    if current_user == @item.user
+       redirect_to root_path
+    end
     @address = Address.new
   end
 #購入ページで商品情報を表示する
