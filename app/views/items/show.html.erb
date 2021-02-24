@@ -32,7 +32,7 @@
       <%= link_to '削除', "/items/#{@item.id}", method: :delete, class:'item-destroy' %>
     <%# 商品が売れていない場合はこちらを表示しましょう(見直しの際に必要) %>
     <% else %>
-    <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
+    <%= link_to '購入画面に進む', item_order_index_path(@item.id) ,class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう(見直しの際に必要) %>
     <% end %>
 
@@ -60,7 +60,7 @@
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= "#{@item.shipping_are.name}" %></td>
+          <td class="detail-value"><%= "#{@item.shipping_area.name}" %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
