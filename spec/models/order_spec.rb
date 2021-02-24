@@ -16,9 +16,9 @@ RSpec.describe Order, type: :model do
       expect(@credit).to be_valid
       end
 
-      it "建物があっても登録できる" do
+      it "建物が空であっても登録できる" do
+        @credit.building = ""
       expect(@credit).to be_valid
-      @credit.building = "学校"
       end
 
     end
