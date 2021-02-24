@@ -70,7 +70,13 @@ RSpec.describe Order, type: :model do
       it "user_idがなければ登録できない" do
         @credit.user_id = ""
         @credit.valid?
-        #expect(@credit.errors.full_messages).to include("Tel is invalid. Include hyphen(-)")
+        expect(@credit.errors.full_messages).to include("User can't be blank")
+      end
+
+      it "item_idがなければ登録できない" do
+        @credit.item_id = ""
+        @credit.valid?
+        expect(@credit.errors.full_messages).to include("Item can't be blank")
       end
 
 
