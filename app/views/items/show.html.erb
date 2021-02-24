@@ -33,6 +33,9 @@
       <p class='or-text'>or</p>
       <%= link_to '削除', "/items/#{@item.id}", method: :delete, class:'item-destroy' %>
     <%# 商品が売れていない場合はこちらを表示しましょう(見直しの際に必要) %>
+
+    <% elsif @item.order != nil %>
+
     <% else %>
     <%= link_to '購入画面に進む', item_order_index_path(@item.id) ,class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう(見直しの際に必要) %>
