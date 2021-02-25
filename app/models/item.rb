@@ -5,13 +5,13 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
-  belongs_to :user  
-  has_one    :order
+  belongs_to :user 
   belongs_to :category
   belongs_to :state
   belongs_to :delivery_cost
   belongs_to :shipping_area
   belongs_to :shipping_days
+  has_one    :order
   
   with_options presence: true do
 
@@ -39,9 +39,4 @@ class Item < ApplicationRecord
   with_options numericality: { only_integer: true } do
   validates :price
   end
-
-  #has?one order
-
-
- 
 end

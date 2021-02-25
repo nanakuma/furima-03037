@@ -43,6 +43,13 @@ RSpec.describe Order, type: :model do
         expect(@credit.errors.full_messages).to include("Shipping area can't be blank")
       end
 
+
+      it "都道府県が1(---)であると登録できない" do
+        @credit.shipping_area_id = 1
+        @credit.valid?
+        expect(@credit.errors.full_messages).to include("Shipping area must be other than 1")
+      end
+
       it "市町村がなければ登録できない" do
         @credit.municipalities = ""
         @credit.valid?

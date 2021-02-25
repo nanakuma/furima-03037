@@ -26,22 +26,18 @@
     </div>
 
   
-  <% if user_signed_in? %>
-
-    <% if current_user.id == @item.user_id %>
+  <% if user_signed_in? && @item.order == nil %>
+    <% if current_user.id == @item.user_id%>
       <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
       <p class='or-text'>or</p>
       <%= link_to '削除', "/items/#{@item.id}", method: :delete, class:'item-destroy' %>
     <%# 商品が売れていない場合はこちらを表示しましょう(見直しの際に必要) %>
-
-    <% elsif @item.order != nil %>
-
     <% else %>
     <%= link_to '購入画面に進む', item_order_index_path(@item.id) ,class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう(見直しの際に必要) %>
     <% end %>
+  <% end %>
 
-  <% else %>
     <div class="item-explain-box">
       <span><%= "#{@item.explanation}" %></span>
     </div>
@@ -73,7 +69,7 @@
         </tr>
       </tbody>
     </table>
-  <% end %>
+
 
     <div class="option">
       <div class="favorite-btn">
