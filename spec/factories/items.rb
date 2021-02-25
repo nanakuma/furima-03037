@@ -5,7 +5,7 @@ FactoryBot.define do
     category_id               {2}
     state_id                  {2}
     delivery_cost_id          {2}
-    shipping_are_id           {2}
+    shipping_area_id          {2}
     shipping_days_id          {2}
     price                     {300}
     

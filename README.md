@@ -53,9 +53,9 @@
 
 belongs_to :user
 
-has_one :purchase
+has_one :order
 
-## 購入画面 purchases table
+## 購入画面 order table
 
 | Column                         | Type                | Options                 |
 |------------------------------- |---------------------|-------------------------|
@@ -67,7 +67,7 @@ belongs_to :item
 has_one :customer
 
 
-## 発送先情報  customers table
+## 発送先情報  address table
 
 | Column                         | Type                | Options                 |
 |------------------------------- |---------------------|-------------------------|
@@ -77,7 +77,7 @@ has_one :customer
 | address                        | string              | null: false            |
 | building                       | string              |                         |
 | tel                            | string              | null: false             |
-| purchase                       | references          | foreign_key: true       |
+| order                       | references          | foreign_key: true       |
 
 belongs_to :purchase
 
