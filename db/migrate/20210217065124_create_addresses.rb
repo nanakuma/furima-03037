@@ -5,7 +5,7 @@ t.string  :post_num           ,null: false
 t.integer :shipping_area_id   ,null: false
 t.string  :municipalities     ,null: false
 t.string  :addresses          ,null: false
-t.string  :building           ,null: false
+t.string  :building         
 t.string  :tel                ,null: false
 
 t.references :order,foreign_key: true

@@ -8,7 +8,7 @@ class Credit
     validates :shipping_area_id,numericality: { other_than: 1 } 
     validates :municipalities
     validates :addresses
-    validates :tel,format: { with: /\A\d{11}\z/, message: "is invalid. Include hyphen(-)" }
+    validates :tel,format: { with: /\A\d{,11}\z/, message: "is invalid. Include hyphen(-)" }
 
     validates :user_id
     validates :item_id

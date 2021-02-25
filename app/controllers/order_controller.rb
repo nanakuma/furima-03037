@@ -13,7 +13,6 @@ class OrderController < ApplicationController
     
     if @credit.valid?
       @credit.save
-      credit_params
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  
       Payjp::Charge.create(
         amount: @item.price,  # 商品の値
